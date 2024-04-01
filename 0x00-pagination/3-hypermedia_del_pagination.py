@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 simple function to ensure user does not miss items
 from a dataset when changed
