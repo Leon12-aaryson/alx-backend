@@ -21,4 +21,7 @@ app.config.object('Config')
 
 @app.route('/')
 def index():
+    '''
+    use template render
+    '''
     return render_template('1-index.html')
