@@ -17,8 +17,8 @@ class Config(object):
 
 
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 app.config.from_object(Config)
+app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
@@ -39,4 +39,4 @@ def get_index() -> str:
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='localhost', port=5000)
