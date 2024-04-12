@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+
 """
 module to create logins
 """
+
 from flask import Flask, g, render_template, request
 from flask_babel import Babel, _
 
@@ -47,7 +49,7 @@ def before_request():
 
 
 @app.route('/')
-def index():
+def get_index() -> str:
     """
     Render the index page with a welcome message.
 
@@ -66,11 +68,6 @@ def index():
 def get_locale():
     """
     Determine the user's preferred language locale.
-
-    This function is called by Flask-Babel to determine the language locale
-    to use for localization. If the user is logged in and has a preferred
-    locale, it will be used; otherwise, it falls back to the browser's
-    preferred language.
 
     Returns:
         str: The selected language locale.
