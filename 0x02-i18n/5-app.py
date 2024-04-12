@@ -61,7 +61,7 @@ def get_index() -> str:
                     username=g.user["name"])
     else:
         message = _("You are not logged in.")
-    return render_template('index.html', message=message)
+    return render_template('5-index.html', message=message)
 
 
 @babel.localeselector
