@@ -7,10 +7,6 @@ from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
 
-app = Flask(__name__)
-babel = Babel(app)
-
-
 class Config(object):
     '''
     accepted languages
@@ -19,8 +15,9 @@ class Config(object):
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-
+app = Flask(__name__)
 app.config.from_object(Config)
+babel = Babel(app)
 
 
 @babel.localeselector
@@ -32,11 +29,11 @@ def get_locale():
 
 
 @app.route('/')
-def index():
+def get_index() -> str:
     '''
     template render
     '''
-    return render_template('index.html')
+    return render_template('3-index.html')
 
 
 if __name__ == '__main__':
