@@ -18,7 +18,7 @@ class Config(object):
 
 
 app = Flask(__name__)
-app.config.object('Config')
+app.config.from_object('Config')
 babel = Babel(app)
 
 
