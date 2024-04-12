@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 '''
-instantiate babel in the python app module
+    module that shows Babel at work
 '''
-
 from flask import Flask, render_template
 from flask_babel import Babel
 
@@ -18,13 +17,19 @@ class Config(object):
 
 
 app = Flask(__name__)
-app.config.from_object('Config')
+app.config.from_object(Config)
+app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
 @app.route('/')
-def index():
+def get_index() -> str:
     '''
     use template render
     '''
+
     return render_template('1-index.html')
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
