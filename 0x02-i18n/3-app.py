@@ -4,7 +4,7 @@ internationalize module
 '''
 
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel
 
 
 class Config(object):
@@ -16,6 +16,7 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 app.config.from_object(Config)
 babel = Babel(app)
 
