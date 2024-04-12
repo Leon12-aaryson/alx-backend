@@ -16,6 +16,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user(user_id):
     """
     Get user information from the mock database.
@@ -24,10 +25,12 @@ def get_user(user_id):
         user_id (int): The ID of the user to retrieve.
 
     Returns:
-        dict or None: A dictionary containing user information if the user is found,
+        dict or None: A dictionary containing user information
+        if the user is found,
         otherwise None.
     """
     return users.get(user_id)
+
 
 @app.before_request
 def before_request():
@@ -42,6 +45,7 @@ def before_request():
     user_id = request.args.get('login_as', type=int)
     g.user = get_user(user_id) if user_id else None
 
+
 @app.route('/')
 def index():
     """
@@ -51,10 +55,12 @@ def index():
         str: HTML content to render.
     """
     if g.user:
-        message = _("You are logged in as %(username)s.", username=g.user["name"])
+        message = _("You are logged in as %(username)s.",
+                    username=g.user["name"])
     else:
         message = _("You are not logged in.")
     return render_template('index.html', message=message)
+
 
 @babel.localeselector
 def get_locale():
@@ -74,5 +80,6 @@ def get_locale():
     else:
         return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
 if __name__ == '__main__':
-    app.run(debug=True, port='0.0.0.0', port=5000)
+    app.run(debug=True)
